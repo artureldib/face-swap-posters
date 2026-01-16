@@ -2,14 +2,11 @@
 
 import { useState } from 'react';
 
-// IMPORTANTE: Substitua esta URL pela URL do webhook do seu n8n
-// Você vai encontrar ela em: https://api.artur.digital/workflow/eqrwO7rG0b8SA9qO
-// A URL será algo como: https://api.artur.digital/webhook/face-swap
 const WEBHOOK_URL = process.env.NEXT_PUBLIC_WEBHOOK_URL || 'https://api.artur.digital/webhook/face-swap';
 
-// Base64 das imagens dos pôsteres (você precisa adicionar aqui)
-const POSTER1_BASE64 = process.env.NEXT_PUBLIC_POSTER1_BASE64 || '';
-const POSTER2_BASE64 = process.env.NEXT_PUBLIC_POSTER2_BASE64 || '';
+// URLs das imagens dos pôsteres hospedadas no GitHub
+const POSTER1_URL = 'https://raw.githubusercontent.com/artureldib/face-swap-posters/main/public/posters/poster1.webp';
+const POSTER2_URL = 'https://raw.githubusercontent.com/artureldib/face-swap-posters/main/public/posters/poster2.webp';
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -40,8 +37,8 @@ export default function Home() {
           },
           body: JSON.stringify({
             userPhoto: base64Data,
-            poster1Base64: POSTER1_BASE64,
-            poster2Base64: POSTER2_BASE64,
+            poster1URL: POSTER1_URL,
+            poster2URL: POSTER2_URL,
           }),
         });
 
